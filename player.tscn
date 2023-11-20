@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bstohlxocfeo6"]
+
+[ext_resource type="Texture2D" uid="uid://b27g075bknu0j" path="res://art/character.png" id="1_3bqoa"]
+[ext_resource type="Script" path="res://player.gd" id="1_emsnj"]
+[ext_resource type="AudioStream" uid="uid://dfyb62kwhb8fb" path="res://audio/hurt.wav" id="3_jpigj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_witds"]
+radius = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekx3n"]
+bg_color = Color(0.729412, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_emsnj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_3bqoa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_witds")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -18.0
+offset_top = 18.0
+offset_right = 18.0
+offset_bottom = 28.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ekx3n")
+step = 1.0
+rounded = true
+show_percentage = false
+
+[node name="TakeDamageCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_jpigj")
+
+[connection signal="timeout" from="TakeDamageCooldown" to="." method="_on_take_damage_cooldown_timeout"]

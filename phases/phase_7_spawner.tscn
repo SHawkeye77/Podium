@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://r30du1rh7xf"]
+
+[ext_resource type="Script" path="res://phases/phase_7_spawner.gd" id="1_nticj"]
+
+[node name="Phase7Spawner" type="Node2D"]
+script = ExtResource("1_nticj")
