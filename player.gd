@@ -44,7 +44,6 @@ func playerHit(damage):
 			death("Health bar got to zero")
 
 func death(reason):
-	print("You died. You died because \"", reason, "\"")
 	Global.phasesSurvived = phaseSpawner.currentPhaseIndex - 1
 	var _level = get_tree().change_scene_to_file(endScreen)
 

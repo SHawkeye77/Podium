@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var world = get_tree().get_first_node_in_group("world")
 @onready var player = get_tree().get_first_node_in_group("player")
-"""
+
 @onready var phases = [
 	preload("res://phases/phase_1_spawner.tscn"),   # Phase 1
 	preload("res://phases/phase_2_spawner.tscn"),   # Phase 2
@@ -20,9 +20,9 @@ extends Node2D
 	preload("res://phases/phase_14_spawner.tscn"),  # Phase 14
 	preload("res://phases/phase_15_spawner.tscn"),  # Phase 15
 ]
-"""
-@onready var phases = [preload("res://phases/phase_15_spawner.tscn")]  # TODO: FOR DEBUGGING, REMOVE EVENTUALLY AND SWITCH BACK TO ABOVE VERSION OF "phases"
-@export var randomMode = false
+
+#@onready var phases = [preload("res://phases/phase_15_spawner.tscn")]  # FOR DEBUGGING, UNCOMMENT THIS AND COMMENT OUT THE PREVIOUS "phases" VARIABLE
+@export var randomMode = true
 var currentPhaseIndex = -1
 
 func _ready():
